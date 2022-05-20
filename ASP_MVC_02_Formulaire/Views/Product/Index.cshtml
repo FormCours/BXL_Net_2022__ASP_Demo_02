@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "Liste des produits";
+}
+
+<h1>Liste des produits</h1>
+<a asp-controller="Product" asp-action="Add">Ajouter</a>
+
+<div>
+    @foreach(Product p in Model)
+    {
+        <p>@p.Id / @p.Name / @p.Price €</p>
+    }
+</div>
