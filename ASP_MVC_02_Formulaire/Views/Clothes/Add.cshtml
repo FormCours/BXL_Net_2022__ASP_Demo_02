@@ -23,7 +23,10 @@
     <div class="mb-2">
         @Html.LabelFor(model => model.Size)
 
+        @* ↓ Génération de la DropDownList sur base d'une liste de SelectItem *@
         @*@Html.DropDownList("size", ViewBag.SizeSelectList, null, new {@class= "form-control"})*@
+
+        @* ↓ Alternative qui génére directement la liste via l'enumeration *@
         @Html.DropDownListFor(m => m.Size, Html.GetEnumSelectList(Model.Size.GetType()), null, new {@class= "form-control"})
 
         @Html.ValidationMessageFor(model => model.Size, null, new {@class = "text-danger"})

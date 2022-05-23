@@ -22,6 +22,8 @@ namespace ASP_MVC_02_Formulaire.Controllers
 
         private IEnumerable<SelectListItem> GetSizeSelectList()
         {
+            // Exemple dans le cas où on l'utilise pas "Html.GetEnumSelectList(Model.Size.GetType())" pour généré la DropDownList
+
             IEnumerable<SelectListItem> sizeSelectList = Enum.GetValues<ClothesSize>()
                 .Select(s => new SelectListItem(
                     s.ToString(),
@@ -34,7 +36,9 @@ namespace ASP_MVC_02_Formulaire.Controllers
 
         public IActionResult Add()
         {
-            ViewBag.SizeSelectList = GetSizeSelectList();
+            // ↓ Necessaire si on utilise la ligne « @Html.DropDownList("size",... »
+            // ViewBag.SizeSelectList = GetSizeSelectList();
+
             return View(new ClothesForm());
         }
 
@@ -43,7 +47,9 @@ namespace ASP_MVC_02_Formulaire.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.SizeSelectList = GetSizeSelectList();
+                // ↓ Necessaire si on utilise la ligne « @Html.DropDownList("size",... »
+                // ViewBag.SizeSelectList = GetSizeSelectList();
+
                 return View(clothesForm);
             }
 
