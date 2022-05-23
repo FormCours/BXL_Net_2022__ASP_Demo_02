@@ -1,0 +1,54 @@
+﻿@model ClothesForm
+@{
+    ViewBag.Title = "Formulaire d'ajout de vetement";
+}
+
+
+<h1>Ajouter une nouveau vetement</h1>
+
+@using(@Html.BeginForm()) {
+    
+    <div class="mb-2">
+        @Html.LabelFor(model => model.Name)
+        @Html.EditorFor(model => model.Name, new {@class= "form-control"})
+        @Html.ValidationMessageFor(model => model.Name, null, new {@class = "text-danger"})
+    </div>
+    
+    <div class="mb-2">
+        @Html.LabelFor(model => model.Color)
+        @Html.EditorFor(model => model.Color, new {@class= "form-control"})
+        @Html.ValidationMessageFor(model => model.Color, null, new {@class = "text-danger"})
+    </div>
+    
+    <div class="mb-2">
+        @Html.LabelFor(model => model.Size)
+
+        @*@Html.DropDownList("size", ViewBag.SizeSelectList, null, new {@class= "form-control"})*@
+        @Html.DropDownListFor(m => m.Size, Html.GetEnumSelectList(Model.Size.GetType()), null, new {@class= "form-control"})
+
+        @Html.ValidationMessageFor(model => model.Size, null, new {@class = "text-danger"})
+    </div>
+    
+    <div class="mb-2">
+        @Html.LabelFor(model => model.WashTemp)
+        @Html.EditorFor(model => model.WashTemp, new {@class= "form-control"})
+        @Html.ValidationMessageFor(model => model.WashTemp, null, new {@class = "text-danger"})
+    </div>
+    
+    <div class="mb-2">
+        @Html.LabelFor(model => model.DryerAllow)
+        @Html.EditorFor(model => model.DryerAllow, new {@class= "form-control"})
+        @Html.ValidationMessageFor(model => model.DryerAllow, null, new {@class = "text-danger"})
+    </div>
+    
+    <div class="mb-2">
+        @Html.LabelFor(model => model.Price)
+        @Html.EditorFor(model => model.Price, new {@class= "form-control"})
+        @Html.ValidationMessageFor(model => model.Price, null, new {@class = "text-danger"})
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-outline-dark">Ajouter</button>
+    </div>
+
+}

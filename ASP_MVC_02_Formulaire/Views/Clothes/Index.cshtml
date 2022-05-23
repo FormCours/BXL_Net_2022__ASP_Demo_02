@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Clothes>
+@using ASP_MVC_02_Formulaire.Helpers
+
+@{
+    ViewBag.Title = "Liste de vetements";
+}
+
+<h1>Liste de vetements</h1>
+@Html.ActionLink("Ajouter un vetement", "Add", "Clothes", null, new {@class="btn btn-dark"})
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.Name)</th>
+            <th>@Html.DisplayNameFor(m => m.Color)</th>
+            <th>@Html.DisplayNameFor(m => m.Size)</th>
+            <th>@Html.DisplayNameFor(m => m.WashTemp)</th>
+            <th>@Html.DisplayNameFor(m => m.DryerAllow)</th>
+            <th>@Html.DisplayNameFor(m => m.Price)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Clothes clothes in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(x => clothes.Name)</td>
+                <td>@Html.DisplayFor(x => clothes.Color)</td>
+                <td>@Html.DisplayFor(x => clothes.Size)</td>
+                <td>@Html.DisplayFor(x => clothes.WashTemp)</td>
+                <td>@Html.DisplayYesNo(clothes.DryerAllow)</td>
+                @*<td>@(clothes.DryerAllow ? "Oui" : "Non")</td>*@
+                <td>@Html.DisplayFor(x => clothes.Price)</td>
+            </tr>
+        }
+    </tbody>
+</table>
