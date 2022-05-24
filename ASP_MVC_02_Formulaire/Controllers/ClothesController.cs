@@ -66,5 +66,12 @@ namespace ASP_MVC_02_Formulaire.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult Detail([FromRoute] int id)
+        {
+            Clothes clothes = _Clothes.SingleOrDefault(c => c.Id == id);
+
+            return View(clothes);
+        }
     }
 }
