@@ -6,8 +6,10 @@
 }
 
 <h1>Liste de vetements</h1>
-@Html.ActionLink("Ajouter un vetement", "Add", "Clothes", null, new {@class="btn btn-dark"})
 
+<a class="btn btn-dark" asp-controller="Clothes" asp-action="Add">Ajouter un vetement</a>
+
+@* Pas d'equivalent pour les "DisplayNameFor" et "DisplayFor" en Tag Helper*@
 <table class="table">
     <thead>
         <tr>
@@ -17,6 +19,7 @@
             <th>@Html.DisplayNameFor(m => m.WashTemp)</th>
             <th>@Html.DisplayNameFor(m => m.DryerAllow)</th>
             <th>@Html.DisplayNameFor(m => m.Price)</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -30,6 +33,10 @@
                 <td>@Html.DisplayYesNo(clothes.DryerAllow)</td>
                 @*<td>@(clothes.DryerAllow ? "Oui" : "Non")</td>*@
                 <td>@Html.DisplayFor(x => clothes.Price)</td>
+
+                 <td>
+                    <a asp-controller="Clothes" asp-action="Detail" asp-route-Id="@clothes.Id" >Detail</a>
+                </td>
             </tr>
         }
     </tbody>
