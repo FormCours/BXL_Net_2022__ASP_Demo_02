@@ -3,3 +3,4 @@
 Demo de l'utilisation des formulaires
  - Partie 1 : Introduction
  - Partie 2 : Html Helper
+ - Partie 3 : Tag Helper
